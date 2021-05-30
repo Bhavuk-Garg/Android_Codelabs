@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -44,7 +45,6 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
                 dialNumber(v);
                 handled=true;
             }
-//            Log.d(LOG_TAG,"You Pressed actionID : "+actionId +" of "+v.getText().toString()+" event: "+event);
             return handled;
         });
     }
@@ -56,11 +56,7 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         Log.d(LOG_TAG,"Dial Number: "+phoneNumber);
         Intent contactIntent=new Intent(Intent.ACTION_DIAL);
         contactIntent.setData(Uri.parse(phoneNumber));
-        if(contactIntent.resolveActivity(getPackageManager())!=null)
-            startActivity(contactIntent);
-        else{
-            Log.d(LOG_TAG,"implicit intents can't handle this");
-        }
+        startActivity(contactIntent);
     }
 
     private void displayToast(String message){
@@ -70,12 +66,12 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
         RadioButton delivery=(RadioButton)view;
         String deliveryMethod=delivery.getText().toString();
         displayToast(deliveryMethod);
+
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
             String location=parent.getItemAtPosition(position).toString();
-            displayToast(location);
     }
 
     @Override
