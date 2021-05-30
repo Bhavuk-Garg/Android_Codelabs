@@ -92,10 +92,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:text="@string/contact_label"
-        android:textSize="20sp"
+        android:textSize="16sp"
         app:layout_constraintBaseline_toBaselineOf="@+id/contact_text"
         app:layout_constraintEnd_toStartOf="@+id/contact_text"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -105,14 +104,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
         android:ems="10"
         android:hint="@string/contact_hint"
         android:inputType="phone"
         android:textColor="#AEA2A2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/label_spinner"
         app:layout_constraintStart_toEndOf="@+id/contact_label"
         app:layout_constraintTop_toBottomOf="@+id/address_text" />
 
@@ -165,24 +162,22 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/delivery_label"
-        >
+        app:layout_constraintTop_toBottomOf="@+id/delivery_label">
 
         <RadioButton
             android:id="@+id/same_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:onClick="ondeliveryMethod"
-            android:text="@string/same_day_delivery"
-            />
+            android:text="@string/same_day_delivery" />
 
         <RadioButton
             android:id="@+id/next_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:onClick="ondeliveryMethod"
-            android:text="@string/next_day_delivery"
-            android:checked="true"/>
+            android:text="@string/next_day_delivery" />
 
         <RadioButton
             android:id="@+id/pickup"
@@ -191,5 +186,18 @@
             android:onClick="ondeliveryMethod"
             android:text="@string/pickup" />
     </RadioGroup>
+
+    <Spinner
+        android:id="@+id/label_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/contact_text"
+        app:layout_constraintTop_toBottomOf="@+id/address_text" />
 
 </android.support.constraint.ConstraintLayout>
