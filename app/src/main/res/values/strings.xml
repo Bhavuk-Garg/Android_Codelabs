@@ -21,4 +21,12 @@
     <string name="name_input_hint">Enter Your Name</string>
     <string name="address_label">Address</string>
     <string name="edit_address_hint">Enter Your Address</string>
+    <string name="contact_hint">Enter Your contact</string>
+    <string name="contact_label">Contact</string>
+    <string name="email_input">Enter Your Email</string>
+    <string name="email_label">Email</string>
+    <string name="delivery_label">Choose a delivery method</string>
+    <string name="same_day_delivery">Same day messenger service</string>
+    <string name="next_day_delivery">Next day ground delivery</string>
+    <string name="pickup">Pickup order</string>
 </resources>
