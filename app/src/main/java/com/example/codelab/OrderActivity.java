@@ -1,17 +1,22 @@
 package com.example.codelab;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class OrderActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
+    private static final String LOG_TAG=OrderActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +36,33 @@ public class OrderActivity extends AppCompatActivity implements AdapterView.OnIt
                     (android.R.layout.simple_spinner_dropdown_item);
             spinner.setAdapter(adapter);
         }
+
+        EditText phoneCall=(EditText)findViewById(R.id.phone_call);
+        phoneCall.setOnEditorActionListener((v, actionId, event) -> {
+            boolean handled=false;
+            if(actionId== EditorInfo.IME_ACTION_SEND){
+                dialNumber(v);
+                handled=true;
+            }
+//            Log.d(LOG_TAG,"You Pressed actionID : "+actionId +" of "+v.getText().toString()+" event: "+event);
+            return handled;
+        });
     }
+
+    private void dialNumber(TextView v){
+        String phoneNumber=null;
+        if(v!=null)
+            phoneNumber="tel:"+v.getText().toString();
+        Log.d(LOG_TAG,"Dial Number: "+phoneNumber);
+        Intent contactIntent=new Intent(Intent.ACTION_DIAL);
+        contactIntent.setData(Uri.parse(phoneNumber));
+        if(contactIntent.resolveActivity(getPackageManager())!=null)
+            startActivity(contactIntent);
+        else{
+            Log.d(LOG_TAG,"implicit intents can't handle this");
+        }
+    }
+
     private void displayToast(String message){
         Toast.makeText(this,message,Toast.LENGTH_SHORT).show();
     }
