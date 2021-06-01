@@ -64,16 +64,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
+        Intent intent=null;
         switch(id){
             case R.id.action_contact:
                 displayToast(getString(R.string.action_contact_message));
                 return true;
             case R.id.action_favourites:
-                displayToast(getString(R.string.action_favorites_message));
+                intent=new Intent(this,Favourites.class);
+                startActivity(intent);
+//                displayToast(getString(R.string.action_favorites_message));
                 return true;
             case R.id.action_order:
-                Intent intent = new Intent(MainActivity.this, OrderActivity.class);
+                intent = new Intent(MainActivity.this, OrderActivity.class);
                 intent.putExtra(orderTextExtra, mOrderMessage);
                 startActivity(intent);
                 return true;
