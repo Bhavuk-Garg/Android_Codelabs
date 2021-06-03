@@ -8,6 +8,11 @@
         android:title="@string/action_contact"
         app:showAsAction="never"/>
     <item
+        android:id="@+id/action_news"
+        android:orderInCategory="90"
+        android:title="@string/action_news"
+        app:showAsAction="never"/>
+    <item
         android:id="@+id/action_order"
         android:orderInCategory="10"
         android:title="@string/action_order"

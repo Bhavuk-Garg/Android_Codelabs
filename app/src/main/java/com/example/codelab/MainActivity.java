@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -81,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_status:
                 displayToast(getString(R.string.action_status_message));
+                return true;
+            case R.id.action_news:
+                intent=new Intent(this,NewsActivity.class);
+                startActivity(intent);
                 return true;
         }
         return super.onOptionsItemSelected(item);
