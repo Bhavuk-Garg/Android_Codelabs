@@ -15,7 +15,10 @@ import com.example.codelab.databinding.ActivityMainBinding;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.util.LinkedList;
+
 public class MainActivity extends AppCompatActivity {
+    private final LinkedList<String> mWordList = new LinkedList<>();
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
@@ -29,6 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
         setSupportActionBar(binding.toolbar);
 
+        for(int i=0;i<20;i++){
+            mWordList.addLast("Word " + i);
+        }
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         appBarConfiguration = new AppBarConfiguration.Builder(navController.getGraph()).build();
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
@@ -40,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+
     }
 
     @Override
